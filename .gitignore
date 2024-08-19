@@ -1,0 +1,20 @@
+/node_modules
+
+
+# testing
+/coverage
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
