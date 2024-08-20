@@ -7,7 +7,7 @@ const sign = (payload, options) => {
 
 const verifyToken = (token) => {
     return new Promise((resolve, reject) => {
-        jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user) => {
+        jwt.verify(token, process.env.JWT_ACCESS_SECRET || 'your-secret-key', (err, user) => {
             if (err) {
                 console.error('Token verification failed:', err);
                 return reject(err);

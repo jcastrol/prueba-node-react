@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors');
 const authRoutes = require('./src/routes/auth'); 
 const solicitudesRoutes =require('./src/routes/solicitudes'); 
 const empleadoRoutes =require('./src/routes/empleado'); 
@@ -8,12 +9,12 @@ const app = express();
 app.use(express.json());
 
 //cors
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+}));
+
 
 //use routes
 app.use('/auth', authRoutes);
