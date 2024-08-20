@@ -8,13 +8,12 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const { authState } = useAuth();
   const navigate = useNavigate();
-  const token = authState.token;
 
   useEffect(() => {
-    if (token) {
+    if (authState.token) {
       navigate('/'); 
     }
-  }, [token, navigate]);
+  }, [authState, navigate]);
   return (
     <AuthTemplate title={"Login"}>
       <LoginForm />

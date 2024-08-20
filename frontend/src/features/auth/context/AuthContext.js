@@ -16,10 +16,7 @@ export const AuthProvider = ({ children }) => {
     role = "USER",
     email = "mail@mail.com",
   }) => {
-    localStorage.setItem("token", token);
-    localStorage.setItem("refreshToken", refreshToken);
-    localStorage.setItem("role", role);
-    localStorage.setItem("email", email);
+    
     setAuthState({
       ...authState,
       token,
@@ -32,6 +29,8 @@ export const AuthProvider = ({ children }) => {
   const clearAuthData = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");
+    localStorage.removeItem("role");
+    localStorage.removeItem("email");
     setAuthState({
       token: null,
       refreshToken: null,

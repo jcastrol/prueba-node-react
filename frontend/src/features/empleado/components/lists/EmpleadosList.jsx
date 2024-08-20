@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getEmpleados } from "../../../../services/empleados";
 import RenderEmpleado from "./EmpleadoRender";
+import { useAuth } from "../../../auth/context/AuthContext";
 
 const EmpleadosList = ({ children }) => {
   const [empleados, setEmpleados] = useState([]);
   const [error, setError] = useState("");
+  const {clearAuthData}=useAuth()
 
   useEffect(() => {
     const getEmpleadosfc = async () => {
@@ -12,8 +14,9 @@ const EmpleadosList = ({ children }) => {
         const data = await getEmpleados();
         setEmpleados(data);
       } catch (err) {
-       // console.log(err);
+
         setError("Failed to fetch empleados");
+        clearAuthData()
       }
     };
 
