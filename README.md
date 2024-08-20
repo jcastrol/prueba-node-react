@@ -37,10 +37,16 @@ docker-compose up --build
 ```
 Este comando construye las imágenes Docker para cada servicio y arranca los contenedores. La opción --build asegura que Docker reconstruya las imágenes en caso de que haya cambios en los Dockerfiles.
 
+```bash
+docker exec -it backend npx prisma migrate dev --schema=./src/config/prisma/schema.prisma
+```
+este comando corre las migraciones de prisma 
 
 ### 5. Accede a los Servicios
 Una vez que los contenedores estén en ejecución, puedes acceder a los servicios en los siguientes URLs:
 
 Frontend: http://localhost:3000
+
 Backend: http://localhost:4000
+
 Base de datos (PostgreSQL): http://localhost:5432
